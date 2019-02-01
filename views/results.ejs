@@ -1,0 +1,15 @@
+<% include partials/header %>
+
+<h1 class="page-title">Results For <%= query.toUpperCase() %></h1>
+<a href="/" class="back-btn">Back</a>
+<div class="trending-container">
+    <% data["results"].forEach((movie) => { %>
+        <div class="trending-cell">
+            <img class="movie-img" src="<%= imageUrl + movie["poster_path"] %>">
+            <p class="movie-title"><%= movie["original_title"] %></p>
+            <p class="movie-desc"><%= movie["overview"].substring(0, 150) %>...</p>
+        </div>
+    <% }) %>
+</div>
+
+<% include partials/footer %>

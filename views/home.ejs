@@ -1,0 +1,22 @@
+<% include ./partials/header %>
+
+<div class="page-title">
+    <h1>Movie Finder</h1>
+</div>
+<form action="/results" method="post">
+    <input type="text" class="form-input" placeholder="Name" name="movieName">
+    <button type="submit" class="form-submit">Search</button>
+</form>
+<div class="divider"></div>
+<h1 class="trending-title">Trending</h1>
+<div class="trending-container">
+    <% data["results"].forEach((movie) => { %>
+        <div class="trending-cell">
+            <img class="movie-img" src="<%= imageUrl + movie["poster_path"] %>">
+            <p class="movie-title"><%= movie["original_title"] %></p>
+            <p class="movie-desc"><%= movie["overview"].substring(0, 150) %>...</p>
+        </div>
+    <% }) %>
+</div>
+
+<% include ./partials/footer %>
